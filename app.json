@@ -1,0 +1,12 @@
+{
+  "name": "loraapp",
+  "displayName": "lora-app",
+  "expo": {
+    "name": "lora-app",
+    "slug": "lora-app",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
