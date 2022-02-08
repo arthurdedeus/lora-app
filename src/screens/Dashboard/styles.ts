@@ -1,8 +1,10 @@
-import { getStatusBarHeight } from 'react-native-iphone-x-helper'
+import { getBottomSpace, getStatusBarHeight } from 'react-native-iphone-x-helper'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { Feather } from '@expo/vector-icons'
 import styled from 'styled-components/native'
 import theme from '../../global/styles/theme'
+import { FlatList, FlatListProps } from 'react-native'
+import { DataListProps } from '.'
 
 export const Container = styled.View`
   flex: 1;
@@ -65,4 +67,25 @@ export const Icon = styled(Feather)`
   color: ${({ theme }) => theme.colors.shape};
   font-size: ${RFValue(24)}px;
 `
+export const Measurements = styled.View`
+  flex: 1;
 
+  padding: 32px 24px;
+
+  background-color: ${({ theme }) => theme.colors.background};
+`
+
+export const Title = styled.Text`
+  font-size: ${RFValue(18)}px;
+  font-family: ${({ theme }) => theme.fonts.regular}
+`
+
+export const MeasurementList = styled(
+  FlatList as new(props : FlatListProps<DataListProps>) => FlatList<DataListProps>
+).attrs({
+  showsVerticalScrollIndicator: false,
+  contentContainerStyle: {
+    paddingBottom: getBottomSpace()
+  }
+})`
+`
