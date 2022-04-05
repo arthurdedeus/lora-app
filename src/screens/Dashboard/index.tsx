@@ -29,7 +29,8 @@ export function Dashboard(){
       title: 'Temperatura',
       measure: '32°C',
       date: "06/02/2022",
-      time: "12:51"
+      time: "12:51",
+      icon: "thermometer"
     },
     {
       id: '2',
@@ -37,7 +38,8 @@ export function Dashboard(){
       title: 'Umidade',
       measure: '90%',
       date: "06/02/2022",
-      time: "12:51"
+      time: "12:51",
+      icon: "droplet"
     },
     {
       id: '3',
@@ -45,26 +47,30 @@ export function Dashboard(){
       title: 'Pressão',
       measure: '1013.25hPa',
       date: "06/02/2022",
-      time: "12:51"
+      time: "12:51",
+      icon: "arrow-down"
     },
   ]
   return(
     <Container>
 
       <Header>
+
         <UserWrapper>
 
           <UserInfo>
             <Picture source={{ uri: 'https://avatars.githubusercontent.com/u/54866778?v=4'}}/>
+
             <User>
               <UserGreeting>Olá,</UserGreeting>
               <UserName>Dono da Estufa</UserName>
             </User>
+
           </UserInfo>
 
           <Icon name="power"/>
-
         </UserWrapper>
+
       </Header>
 
       <Measurements>

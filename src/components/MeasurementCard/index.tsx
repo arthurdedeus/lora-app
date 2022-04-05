@@ -6,6 +6,9 @@ import {
   Footer,
   Icon,
   Timestamp,
+  ContentWrapper,
+  GraphWrapper,
+  Graph
  } from './styles';
 
 export interface MeasurementCardProps {
@@ -14,6 +17,7 @@ export interface MeasurementCardProps {
   measure: string;
   date: string;
   time: string;
+  icon: string;
 }
 
 interface Props {
@@ -23,18 +27,18 @@ interface Props {
 export function MeasurementCard({ data } : Props){
   return(
     <Container>
+      <ContentWrapper>
+        <Title>{data.title}</Title>
+        <Measure type={data.type}>{data.measure}</Measure>
 
-      <Title>{data.title}</Title>
-
-      <Measure type={data.type}>
-        {data.measure}
-      </Measure>
-
-      <Footer>
-        <Icon name="thermometer"/>
-
-        <Timestamp>{data.date} às {data.time}</Timestamp>
-      </Footer>
+        <Footer>
+          <Icon name={data.icon}/>
+          <Timestamp>{data.date} às {data.time}</Timestamp>
+        </Footer>
+      </ContentWrapper>
+      <GraphWrapper>
+        <Graph source={require('../../assets/images/graph-small.png')}/>
+      </GraphWrapper>
 
     </Container>
   )

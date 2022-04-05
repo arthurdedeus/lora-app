@@ -77,7 +77,7 @@ export const Measurements = styled.View`
 
 export const Title = styled.Text`
   font-size: ${RFValue(18)}px;
-  font-family: ${({ theme }) => theme.fonts.regular}
+  font-family: ${({ theme }) => theme.fonts.regular};
 `
 
 export const MeasurementList = styled(

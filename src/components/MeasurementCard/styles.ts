@@ -8,7 +8,9 @@ interface MeasureProps {
 
 
 export const Container = styled.TouchableOpacity`
+  flex-direction: row;
   background-color: ${({ theme }) => theme.colors.shape};
+  align-items: center;
 
   margin: 16px 0px;
   padding: 18px 24px;
@@ -29,13 +31,14 @@ export const Measure = styled.Text<MeasureProps>`
 
 export const Footer = styled.View`
   flex-direction: row;
-
   margin-top: 19px;
+  align-items: center;
 `
 
 export const Icon = styled(Feather)<MeasureProps>`
   font-size: ${RFValue(20)}px;
   color: ${({ theme }) => theme.colors.primary};
+  margin-right: 5px;
 `
 
 export const Timestamp = styled.Text`
@@ -44,3 +47,10 @@ export const Timestamp = styled.Text`
   color: ${({ theme }) => theme.colors.text};
 `
 
+export const ContentWrapper = styled.View``
+
+export const GraphWrapper = styled.View``
+
+export const Graph = styled.Image`
+  margin-left: 8px;
+`
