@@ -2,7 +2,6 @@ import { getBottomSpace, getStatusBarHeight } from 'react-native-iphone-x-helper
 import { RFValue } from 'react-native-responsive-fontsize'
 import { Feather } from '@expo/vector-icons'
 import styled from 'styled-components/native'
-import theme from '../../global/styles/theme'
 import { FlatList, FlatListProps } from 'react-native'
 import { DataListProps } from '.'
 
