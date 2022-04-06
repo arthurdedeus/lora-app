@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatTemperature } from '../../util/format';
 import {
   Container,
   Title,
@@ -7,7 +8,7 @@ import {
 
 export interface MetricProps {
   name: string;
-  value: number;
+  value: string;
 }
 
 interface Props {
@@ -17,8 +18,8 @@ interface Props {
 export function Metric({ data } : Props){
   return(
     <Container>
-        <Title>{data.title}</Title>
-        <Value>{data.measure}</Value>
+        <Title>{data.name}</Title>
+        <Value>{data.value}</Value>
     </Container>
   )
 }

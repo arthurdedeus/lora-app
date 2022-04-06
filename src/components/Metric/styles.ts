@@ -1,5 +1,4 @@
 import styled from 'styled-components/native'
-import { Feather } from '@expo/vector-icons'
 import { RFValue } from 'react-native-responsive-fontsize'
 
 interface MeasureProps {
@@ -7,24 +6,25 @@ interface MeasureProps {
 }
 
 
-export const Container = styled.TouchableOpacity`
+export const Container = styled.View`
   flex-direction: row;
   background-color: ${({ theme }) => theme.colors.shape};
   align-items: center;
+  justify-content: space-between;
 
-  margin: 16px 0px;
-  padding: 18px 24px;
+  margin: 8px 0px;
+  padding: 12px 24px;
   border-radius: 5px;
 `
 
 export const Title = styled.Text`
-  font-size: ${RFValue(14)}px;
+  font-size: ${RFValue(15)}px;
   font-family: ${({ theme }) => theme.fonts.regular};
   color: ${({ theme }) => theme.colors.title};
 `
 
 export const Value = styled.Text`
-  font-size: ${RFValue(20)}px;
-  font-family: ${({ theme }) => theme.fonts.regular};
-  color: ${({ theme }) => theme.colors.primary};
+  font-size: ${RFValue(15)}px;
+  font-family: ${({ theme }) => theme.fonts.bold};
+  color: ${({ theme }) => theme.colors.title};
 `

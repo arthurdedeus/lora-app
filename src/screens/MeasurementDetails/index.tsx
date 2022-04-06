@@ -28,38 +28,42 @@ export function MeasurementDetails(){
     metrics: [
       {
         name: "Média",
-        value: 32
+        value: "32ºC"
       },
       {
         name: "Mediana",
-        value: 30
+        value: "30ºC"
       },
       {
         name: "Média móvel 24h",
-        value: 28
+        value: "28ºC"
       },
       {
         name: "Média móvel 7d",
-        value: 27
+        value: "27ºC"
       }
     ]
   }
 
   return(
     <Container>
+
       <Header>
         <Title>
-          Temperatura
+          {data.title}
         </Title>
       </Header>
-      <ContentWrapper>
-        <Graph source={require('../../assets/images/graph-large.png')}/>
-        <MetricsList>
-          <Metric />
-          <Metric />
-        </MetricsList>
-      </ContentWrapper>
 
+      <ContentWrapper>
+
+        <Graph source={require('../../assets/images/graph-large.png')}/>
+        <MetricsList
+          data={data.metrics}
+          keyExtractor={item => item.name}
+          renderItem={({ item }) => <Metric data={item} />}
+        />
+
+      </ContentWrapper>
 
     </Container>
   )

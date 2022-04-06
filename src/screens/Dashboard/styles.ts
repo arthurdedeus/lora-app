@@ -66,6 +66,7 @@ export const Icon = styled(Feather)`
   color: ${({ theme }) => theme.colors.shape};
   font-size: ${RFValue(24)}px;
 `
+
 export const Measurements = styled.View`
   flex: 1;
 
