@@ -1,0 +1,19 @@
+{
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "quotes": "off",
+    "prefer-const": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "react/jsx-key": "off", // this should be removed after resolve all any types.
+    "react/no-unescaped-entities": "off", // this should be removed after resolve all quote issues.
+    "@typescript-eslint/no-explicit-any": "off", // this should be error, but keep it till we remove all any types.
+    "import/no-anonymous-default-export": "off",
+    "@typescript-eslint/no-unused-vars": [2, { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-namespace": 0
+  }
+}
