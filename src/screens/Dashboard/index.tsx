@@ -27,12 +27,12 @@ export interface DataListProps extends MeasurementCardProps {
 
 type RootStackParamList = {
   Dashboard: undefined;
-  Details: undefined;
+  Details: { type: string };
 };
 
-type Props = NativeStackScreenProps<RootStackParamList, 'Details'>;
+type Props = NativeStackScreenProps<RootStackParamList, 'Dashboard'>;
 
-export function Dashboard({ route, navigation }: Props) {
+export function Dashboard({ navigation }: Props) {
   const data: DataListProps[] = [
     {
       id: "1",
@@ -91,7 +91,9 @@ export function Dashboard({ route, navigation }: Props) {
           renderItem={
             ({ item }) => <MeasurementCard
               data={item}
-              onPress={() => navigation.navigate('Details')}
+              onPress={() => navigation.navigate('Details', {
+                type: item.type
+              })}
             />
           }
         />
