@@ -15,6 +15,7 @@ import { MeasurementDetails } from "./src/screens/MeasurementDetails";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+
 export default function App() {
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
