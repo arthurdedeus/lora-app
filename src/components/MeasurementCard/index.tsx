@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Container,
   Title,
@@ -8,8 +8,8 @@ import {
   Timestamp,
   ContentWrapper,
   GraphWrapper,
-  Graph
- } from './styles';
+  Graph,
+} from "./styles";
 
 export interface MeasurementCardProps {
   type: string;
@@ -22,24 +22,26 @@ export interface MeasurementCardProps {
 
 interface Props {
   data: MeasurementCardProps;
+  onPress: () => void;
 }
 
-export function MeasurementCard({ data } : Props){
-  return(
-    <Container>
+export function MeasurementCard({ data, onPress }: Props) {
+  return (
+    <Container onPress={onPress}>
       <ContentWrapper>
         <Title>{data.title}</Title>
         <Measure type={data.type}>{data.measure}</Measure>
 
         <Footer>
-          <Icon name={data.icon}/>
-          <Timestamp>{data.date} às {data.time}</Timestamp>
+          <Icon name={data.icon} />
+          <Timestamp>
+            {data.date} às {data.time}
+          </Timestamp>
         </Footer>
       </ContentWrapper>
       <GraphWrapper>
-        <Graph source={require('../../assets/images/graph-small.png')}/>
+        <Graph source={require("../../assets/images/graph-small.png")} />
       </GraphWrapper>
-
     </Container>
-  )
+  );
 }

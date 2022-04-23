@@ -11,7 +11,7 @@ export const Container = styled.View`
 
 export const Header = styled.View`
   width: 100%;
-  height: ${(RFValue(150))}px;
+  height: ${RFValue(150)}px;
 
   background-color: ${({ theme }) => theme.colors.primary};
 
@@ -28,7 +28,6 @@ export const UserWrapper = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
 `
 
 export const UserInfo = styled.View`
@@ -37,8 +36,8 @@ export const UserInfo = styled.View`
 `
 
 export const Picture = styled.Image`
-  width: ${(RFValue(55))}px;
-  height: ${(RFValue(55))}px;
+  width: ${RFValue(55)}px;
+  height: ${RFValue(55)}px;
 
   border-radius: 10px;
 `
@@ -70,7 +69,9 @@ export const Icon = styled(Feather)`
 export const Measurements = styled.View`
   flex: 1;
 
-  padding: 32px 24px;
+  padding-top: 20px;
+  padding-right: 24px;
+  padding-left: 24px;
 
   background-color: ${({ theme }) => theme.colors.background};
 `
@@ -81,11 +82,10 @@ export const Title = styled.Text`
 `
 
 export const MeasurementList = styled(
-  FlatList as new(props : FlatListProps<DataListProps>) => FlatList<DataListProps>
+  FlatList as new (props: FlatListProps<DataListProps>) => FlatList<DataListProps>
 ).attrs({
   showsVerticalScrollIndicator: false,
   contentContainerStyle: {
-    paddingBottom: getBottomSpace()
-  }
-})`
-`
+    paddingBottom: getBottomSpace(),
+  },
+})``
