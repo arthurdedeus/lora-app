@@ -12,10 +12,9 @@ import {
 import theme from './src/global/styles/theme';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { LogsProvider } from './src/hooks';
+import { DashboardDataProvider, LogsProvider, MetricsProvider } from './src/hooks';
 import { Dashboard } from './src/screens/Dashboard';
 import { MeasurementDetails } from './src/screens/MeasurementDetails';
-import { DashboardDataProvider } from './src/hooks/useDashboardData';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -34,24 +33,26 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <LogsProvider>
         <DashboardDataProvider>
-          <NavigationContainer>
-            <Stack.Navigator initialRouteName="Dashboard">
-              <Stack.Screen
-                name="Dashboard"
-                component={Dashboard}
-                options={{
-                  headerShown: false,
-                }}
-              />
-              <Stack.Screen
-                name="Details"
-                component={MeasurementDetails}
-                options={{
-                  headerShown: false,
-                }}
-              />
-            </Stack.Navigator>
-          </NavigationContainer>
+          <MetricsProvider>
+            <NavigationContainer>
+              <Stack.Navigator initialRouteName="Dashboard">
+                <Stack.Screen
+                  name="Dashboard"
+                  component={Dashboard}
+                  options={{
+                    headerShown: false,
+                  }}
+                />
+                <Stack.Screen
+                  name="Details"
+                  component={MeasurementDetails}
+                  options={{
+                    headerShown: false,
+                  }}
+                />
+              </Stack.Navigator>
+            </NavigationContainer>
+          </MetricsProvider>
         </DashboardDataProvider>
       </LogsProvider>
     </ThemeProvider>
