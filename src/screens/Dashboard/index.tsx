@@ -20,6 +20,8 @@ import {
   Title,
   MeasurementList,
 } from "./styles";
+import { useLogs } from "../../hooks";
+import { useDashboardData } from "../../hooks/useDashboardData";
 
 export interface DataListProps extends MeasurementCardProps {
   id: string;
@@ -33,35 +35,9 @@ type RootStackParamList = {
 type Props = NativeStackScreenProps<RootStackParamList, 'Dashboard'>;
 
 export function Dashboard({ navigation }: Props) {
-  const data: DataListProps[] = [
-    {
-      id: "1",
-      type: "temperature",
-      title: "Temperatura",
-      measure: "32°C",
-      date: "06/02/2022",
-      time: "12:51",
-      icon: "thermometer",
-    },
-    {
-      id: "2",
-      type: "humidity",
-      title: "Umidade",
-      measure: "90%",
-      date: "06/02/2022",
-      time: "12:51",
-      icon: "droplet",
-    },
-    {
-      id: "3",
-      type: "pressure",
-      title: "Pressão",
-      measure: "1013.25hPa",
-      date: "06/02/2022",
-      time: "12:51",
-      icon: "arrow-down",
-    },
-  ];
+  const { logs } = useLogs() // TODO: Use to generate graph
+  const data = useDashboardData()
+
   return (
     <Container>
       <Header>
