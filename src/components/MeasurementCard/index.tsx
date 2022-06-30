@@ -1,6 +1,7 @@
 import React from 'react';
 import { Dimensions } from 'react-native';
 import { LineChart } from 'react-native-chart-kit';
+import { Graph } from '../Graph';
 
 import {
   Container,
@@ -11,7 +12,6 @@ import {
   Timestamp,
   ContentWrapper,
   GraphWrapper,
-  Graph,
 } from './styles';
 
 export interface MeasurementCardProps {
@@ -25,35 +25,11 @@ export interface MeasurementCardProps {
 
 interface Props {
   data: MeasurementCardProps;
+  values: number[];
   onPress: () => void;
 }
 
 export function MeasurementCard({ data, onPress }: Props) {
-  const width = 185;
-  const height = 100;
-  const data2 = {
-    labels: [],
-    datasets: [
-      {
-        data: [50, 20, 2, 86, 71, 100],
-        color: (opacity = 1) => `rgba(18, 164, 84, ${opacity})`,
-      },
-    ],
-  };
-  const chartConfig = {
-    backgroundColor: '#fff',
-    backgroundGradientFrom: '#fff',
-    backgroundGradientTo: '#fff',
-    decimalPlaces: 1,
-    color: (opacity = 1) => `rgba(18, 164, 84, ${opacity})`,
-    style: {
-      borderRadius: 0,
-    },
-  };
-  const graphStyle = {
-    marginVertical: 0,
-    ...chartConfig.style,
-  };
   return (
     <Container onPress={onPress}>
       <ContentWrapper>
@@ -67,19 +43,9 @@ export function MeasurementCard({ data, onPress }: Props) {
           </Timestamp>
         </Footer>
       </ContentWrapper>
-      {/* <GraphWrapper> */}
-        <LineChart
-          data={data2}
-          width={width}
-          height={height}
-          chartConfig={chartConfig}
-          style={graphStyle}
-          // withHorizontalLabels={false}
-          withInnerLines={false}
-          withOuterLines={false}
-        />
-        {/* <Graph source={require("../../assets/images/graph-small.png")} /> */}
-      {/* </GraphWrapper> */}
+      <GraphWrapper>
+        <Graph values={[30, 90, 67, 54, 10, 2]} width={185} height={100} />
+      </GraphWrapper>
     </Container>
   );
 }
