@@ -4,6 +4,7 @@ import { Metric, MetricProps } from '../../components/Metric'
 import type { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { Container, Header, Icon, Title, ContentWrapper, Graph, MetricsList } from './styles'
 import { View } from 'react-native'
+import { useMetrics } from '../../hooks'
 
 type RootStackParamList = {
   Dashboard: undefined
@@ -23,9 +24,16 @@ interface MeasurementDataProps {
   pressure: DataProps
 }
 
+const  titleMap = {
+  temperature: 'Temperatura',
+  humidity: 'Umidade',
+  pressure: 'Pressão'
+}
+
 
 export function MeasurementDetails({ route, navigation }: Props) {
   const { type } = route.params
+  const metrics = useMetrics()
   const measurementData: MeasurementDataProps = {
     temperature: {
       id: '1',
@@ -109,13 +117,13 @@ export function MeasurementDetails({ route, navigation }: Props) {
       ],
     },
   }
-  const data: DataProps = measurementData[type]
+  const data = metrics[type]
 
   return (
     <Container>
       <Header>
         <View style={{position: "absolute", left: 0, right: 0, alignItems: "center"}}>
-          <Title>{data.title}</Title>
+          <Title>{titleMap[type]}</Title>
         </View>
         <Icon name="chevron-left" onPress={() => navigation.navigate('Dashboard')} />
       </Header>
@@ -123,9 +131,9 @@ export function MeasurementDetails({ route, navigation }: Props) {
       <ContentWrapper>
         <Graph source={require('../../assets/images/graph-large.png')} />
         <MetricsList
-          data={data.metrics}
+          data={data}
           keyExtractor={(item) => item.name}
-          renderItem={({ item }) => <Metric data={item} />}
+          renderItem={({ item }) => <Metric data={item} type={type} />}
         />
       </ContentWrapper>
     </Container>

@@ -1,21 +1,22 @@
 import React from "react";
-import { formatTemperature } from "../../util/format";
+import { formatMetric } from "../../utils/format";
 import { Container, Title, Value } from "./styles";
 
 export interface MetricProps {
   name: string;
-  value: string;
+  value: number;
 }
 
 interface Props {
   data: MetricProps;
+  type: string;
 }
 
-export function Metric({ data }: Props) {
+export function Metric({ data, type }: Props) {
   return (
     <Container>
       <Title>{data.name}</Title>
-      <Value>{data.value}</Value>
+      <Value>{formatMetric(type, data.value)}</Value>
     </Container>
   );
 }
