@@ -29,7 +29,7 @@ interface Props {
   onPress: () => void;
 }
 
-export function MeasurementCard({ data, onPress }: Props) {
+export function MeasurementCard({ data, onPress, values }: Props) {
   return (
     <Container onPress={onPress}>
       <ContentWrapper>
@@ -44,7 +44,7 @@ export function MeasurementCard({ data, onPress }: Props) {
         </Footer>
       </ContentWrapper>
       <GraphWrapper>
-        <Graph values={[30, 90, 67, 54, 10, 2]} width={185} height={100} />
+        <Graph values={values} width={185} height={100} />
       </GraphWrapper>
     </Container>
   );
