@@ -1,4 +1,8 @@
-import React from "react";
+import React from 'react';
+import { Dimensions } from 'react-native';
+import { LineChart } from 'react-native-chart-kit';
+import { Graph } from '../Graph';
+
 import {
   Container,
   Title,
@@ -8,8 +12,7 @@ import {
   Timestamp,
   ContentWrapper,
   GraphWrapper,
-  Graph,
-} from "./styles";
+} from './styles';
 
 export interface MeasurementCardProps {
   type: string;
@@ -22,10 +25,11 @@ export interface MeasurementCardProps {
 
 interface Props {
   data: MeasurementCardProps;
+  values: number[];
   onPress: () => void;
 }
 
-export function MeasurementCard({ data, onPress }: Props) {
+export function MeasurementCard({ data, onPress, values }: Props) {
   return (
     <Container onPress={onPress}>
       <ContentWrapper>
@@ -40,7 +44,7 @@ export function MeasurementCard({ data, onPress }: Props) {
         </Footer>
       </ContentWrapper>
       <GraphWrapper>
-        <Graph source={require("../../assets/images/graph-small.png")} />
+        <Graph values={values} width={185} height={100} />
       </GraphWrapper>
     </Container>
   );

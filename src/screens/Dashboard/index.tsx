@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { Text } from "react-native";
-import { measure } from "react-native-reanimated";
+import { Text } from 'react-native';
+import { measure } from 'react-native-reanimated';
 import {
   MeasurementCard,
   MeasurementCardProps,
-} from "../../components/MeasurementCard";
+} from '../../components/MeasurementCard';
 import {
   Container,
   Header,
@@ -19,9 +19,10 @@ import {
   Measurements,
   Title,
   MeasurementList,
-} from "./styles";
-import { useLogs } from "../../hooks";
-import { useDashboardData } from "../../hooks/useDashboardData";
+} from './styles';
+import { useLogs } from '../../hooks';
+import { useDashboardData } from '../../hooks/useDashboardData';
+import { getLogs } from '../../utils';
 
 export interface DataListProps extends MeasurementCardProps {
   id: string;
@@ -35,8 +36,8 @@ type RootStackParamList = {
 type Props = NativeStackScreenProps<RootStackParamList, 'Dashboard'>;
 
 export function Dashboard({ navigation }: Props) {
-  const { logs } = useLogs() // TODO: Use to generate graph
-  const data = useDashboardData()
+  const logs = useLogs();
+  const data = useDashboardData();
 
   return (
     <Container>
@@ -45,7 +46,7 @@ export function Dashboard({ navigation }: Props) {
           <UserInfo>
             <Picture
               source={{
-                uri: "https://avatars.githubusercontent.com/u/54866778?v=4",
+                uri: 'https://avatars.githubusercontent.com/u/54866778?v=4',
               }}
             />
 
@@ -63,15 +64,18 @@ export function Dashboard({ navigation }: Props) {
         <Title>Grandezas Monitoradas</Title>
         <MeasurementList
           data={data}
-          keyExtractor={(item) => item.id}
-          renderItem={
-            ({ item }) => <MeasurementCard
+          keyExtractor={item => item.id}
+          renderItem={({ item }) => (
+            <MeasurementCard
               data={item}
-              onPress={() => navigation.navigate('Details', {
-                type: item.type
-              })}
+              onPress={() =>
+                navigation.navigate('Details', {
+                  type: item.type,
+                })
+              }
+              values={getLogs(logs, item.type)}
             />
-          }
+          )}
         />
       </Measurements>
     </Container>
