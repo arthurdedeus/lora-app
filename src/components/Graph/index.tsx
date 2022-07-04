@@ -2,12 +2,14 @@ import React from "react";
 import { LineChart } from "react-native-chart-kit";
 
 interface GraphProps {
+  bgColor?: string;
   height: number;
   width: number;
   values: number[];
 }
 
-export function Graph ({ height, values, width } : GraphProps) {
+export function Graph ({ height, values, width, bgColor } : GraphProps) {
+  const backgroundColor = bgColor || '#fff';
   const data2 = {
     labels: [],
     datasets: [
@@ -18,9 +20,9 @@ export function Graph ({ height, values, width } : GraphProps) {
     ],
   };
   const chartConfig = {
-    backgroundColor: '#fff',
-    backgroundGradientFrom: '#fff',
-    backgroundGradientTo: '#fff',
+    backgroundColor: backgroundColor,
+    backgroundGradientFrom: backgroundColor,
+    backgroundGradientTo: backgroundColor,
     decimalPlaces: 1,
     color: (opacity = 1) => `rgba(18, 164, 84, ${opacity})`,
     style: {
@@ -38,9 +40,9 @@ export function Graph ({ height, values, width } : GraphProps) {
     height={height}
     chartConfig={chartConfig}
     style={graphStyle}
-    // withHorizontalLabels={false}
     withInnerLines={false}
     withOuterLines={false}
+    withDots={false}
   />
   )
 }
